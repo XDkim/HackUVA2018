@@ -7,20 +7,25 @@
 using namespace std;
 using namespace cv;
 
+void draw( Mat& img, double scale, bool drawRect );
+
 int main( int argc, const char** argv ){
     // VideoCapture class for playing video for which faces to be detected
     VideoCapture capture; 
     Mat frame, image, lastFrame, diff;
     int i,j;
     double actionCoefficient,dist;
+    double scale = 1;
 
     // Start Video..1) 0 for WebCam 2) "Path to Video" for a Local Video
-    //capture.open("test_vids/videoplayback.mp4"); 
-    capture.open(0);
+    bool webcam = true;
+    if(!webcam)
+        capture.open("test_vids/videoplayback.mp4"); 
+    else
+        capture.open(0);
     capture.set(CV_CAP_PROP_FRAME_WIDTH, 640);
     capture.set(CV_CAP_PROP_FRAME_HEIGHT, 360);
     if( capture.isOpened() ){
-        // Capture frames from video and detect faces
         cout << "Action Coefficient Started...." << endl;
         bool first = true;
         while(1){
@@ -42,6 +47,10 @@ int main( int argc, const char** argv ){
                 cout << actionCoefficient << endl;
             }
 
+            if(webcam){
+                draw(frame,scale,actionCoefficient>1000000);
+            }
+            
             char c = (char)waitKey(10);
 
             // Press q to exit from window
@@ -54,4 +63,12 @@ int main( int argc, const char** argv ){
     else
         cout<<"Could not Open Camera";
     return 0;
+}
+
+void draw( Mat& img,
+        double scale, bool drawRect){
+    Scalar color = Scalar(255,0,0);
+    rectangle(img,cvPoint(0,0),cvPoint(cvRound((img.cols-1)*scale),cvRound((img.rows-1)*scale)),color,3,8,0);
+    resize(img, img, Size(640, 360), 0, 0, INTER_CUBIC);
+    imshow( "Webcam", img ); 
 }
