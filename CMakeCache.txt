@@ -135,7 +135,7 @@ CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 CMAKE_OSX_SYSROOT:STRING=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Test
+CMAKE_PROJECT_NAME:STATIC=action
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ranlib
@@ -210,6 +210,12 @@ Test_BINARY_DIR:STATIC=/Users/augenepark/HackUVA2018
 
 //Value Computed by CMake
 Test_SOURCE_DIR:STATIC=/Users/augenepark/HackUVA2018
+
+//Value Computed by CMake
+action_BINARY_DIR:STATIC=/Users/augenepark/HackUVA2018
+
+//Value Computed by CMake
+action_SOURCE_DIR:STATIC=/Users/augenepark/HackUVA2018
 
 
 ########################

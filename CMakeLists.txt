@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.0)
-project( Test )
+project( action )
 find_package( OpenCV REQUIRED )
 include_directories(OpenCV_INCLUDE_DIR)
 add_executable( action action.cpp )
