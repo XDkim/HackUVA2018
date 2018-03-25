@@ -15,7 +15,7 @@ int main( int argc, const char** argv ){
     double actionCoefficient,dist;
 
     // Start Video..1) 0 for WebCam 2) "Path to Video" for a Local Video
-    capture.open(0); 
+    capture.open("test_vids/videoplayback.mp4"); 
     capture.set(CV_CAP_PROP_FRAME_WIDTH, 640);
     capture.set(CV_CAP_PROP_FRAME_HEIGHT, 360);
     if( capture.isOpened() ){
@@ -38,7 +38,7 @@ int main( int argc, const char** argv ){
                         actionCoefficient += dist;
                     }
                 }
-                cout << actionCoefficient;
+                cout << actionCoefficient << endl;
             }
 
             char c = (char)waitKey(10);
